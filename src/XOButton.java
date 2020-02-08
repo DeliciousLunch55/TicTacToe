@@ -14,8 +14,8 @@ public class XOButton extends JButton{
      */
     public XOButton()
     {
-        X=new ImageIcon(this.getClass().getResource("/TicTacToeAssets/X.png"));
-        O=new ImageIcon(this.getClass().getResource("/TicTacToeAssets/O.png"));
+        X=new ImageIcon(this.getClass().getResource("/res/X.png"));
+        O=new ImageIcon(this.getClass().getResource("/res/O.png"));
     }
 
     public void setValue(byte playerVal)
