@@ -1,3 +1,4 @@
+package com.dobby.apps.TicTacToe;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -12,15 +13,18 @@ public class TicTacToe extends JFrame implements ActionListener{
     JPanel pnl=new JPanel();
     JPanel statusPanel=new JPanel();
     JLabel statusLabel=new JLabel();
-    ImageIcon masterIcon=new ImageIcon(this.getClass().getResource("/res/O.png"));
+    ImageIcon masterIcon=new ImageIcon(this.getClass().getResource("/com/dobby/apps/TicTacToe/res/O.png"));
+    int numPlayers;
 
     XOButton buttons[]=new XOButton[9];
     byte turnPlayer=1; //turnPlayer 1: O, turnPlayer 2: X
     byte winner=0; //winner 0: no winner yet, winner 1: player 1 (O) wins, winner 2: player 2 (X) wins
 
-    public TicTacToe()
+    public TicTacToe(int numPlayers)
     {
         super("Tic Tac Toe!");
+        this.numPlayers=numPlayers;
+        System.out.println(numPlayers);
         setSize(500,500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);

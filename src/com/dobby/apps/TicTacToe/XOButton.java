@@ -1,3 +1,4 @@
+package com.dobby.apps.TicTacToe;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -14,8 +15,8 @@ public class XOButton extends JButton{
      */
     public XOButton()
     {
-        X=new ImageIcon(this.getClass().getResource("/res/X.png"));
-        O=new ImageIcon(this.getClass().getResource("/res/O.png"));
+        X=new ImageIcon(this.getClass().getResource("/com/dobby/apps/TicTacToe/res/X.png"));
+        O=new ImageIcon(this.getClass().getResource("/com/dobby/apps/TicTacToe/res/O.png"));
     }
 
     public void setValue(byte playerVal)
