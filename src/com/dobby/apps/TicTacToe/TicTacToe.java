@@ -24,7 +24,6 @@ public class TicTacToe extends JFrame implements ActionListener{
     {
         super("Tic Tac Toe!");
         this.numPlayers=numPlayers;
-        System.out.println(numPlayers);
         setSize(500,500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -66,19 +65,35 @@ public class TicTacToe extends JFrame implements ActionListener{
 
                     turnPlayer%=2;   //Mod turnPlayer by 2 to get a result of 0 or 1, and then add 1 (since I had
                     turnPlayer++;    //foolishly set everything up already to recognize 1/2 as valid players)
+                    checkTurnEndConditions();
 
-                    winner=CheckBoardCondition.checkWinCondition(getBoardState());
-                    if(winner!=0) {
-                       showWinDialog(winner);
-                    } else if(CheckBoardCondition.checkDrawCondition(getBoardState())) {
-                        showDrawDialog();
-                    } else {
-                        setStatus(String.format("Player %d, your turn.",turnPlayer));
+                    if(numPlayers==1) {
+                        performComputerTurn();
                     }
+
                 } else {
                     setStatus("Invalid selection, try again.");
                 }
             }
+        }
+    }
+
+    public void performComputerTurn() {
+        int bestMove=Minimax.findBestMove(getBoardState());
+        buttons[bestMove].setValue((byte) 2);
+        turnPlayer=1;
+        checkTurnEndConditions();
+    }
+
+    public void checkTurnEndConditions() {  //Checks the win and draw conditions, and changes game status accordingly
+        winner=CheckBoardCondition.checkWinCondition(getBoardState());
+
+        if(winner!=0) {
+            showWinDialog(winner);
+        } else if(CheckBoardCondition.checkDrawCondition(getBoardState())) {
+            showDrawDialog();
+        } else {
+            setStatus(String.format("Player %d, your turn.",turnPlayer));
         }
     }
 
